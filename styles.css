@@ -6,6 +6,30 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+
+/* https://github.com/mgmeyers/obsidian-style-settings */
+
+/* @settings
+
+name: obsidian-sticky-heading
+id: obsidian-sticky-heading
+settings:
+    -
+        id: obsidian-sticky-heading-top-space
+        title: top space when sticky
+        description: when sticky, how much space should be left at the top of the screen. like 5px, -1rem, etc.
+        type: variable-text
+        default: 0px
+
+*/
+
+.obsidian-sticky-heading {
+	position: sticky !important;
+	top: var(--obsidian-sticky-heading-top-space);
+	background-color: var(--titlebar-background) ;
+	z-index: 1;
+}
+
 .obsidian-sticky-heading::before {
 	content: attr(data-obsidian-sticky-heading_level);
 	position: absolute;
@@ -14,4 +38,5 @@ If your plugin does not need CSS, delete this file.
 	font-weight: normal;
 	color: var(--text-faint);
 	font-size: 14px;
+	background-color: var(--background-primary) ;
 }
