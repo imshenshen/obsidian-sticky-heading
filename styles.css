@@ -6,3 +6,12 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+.obsidian-sticky-heading::before {
+	content: attr(data-obsidian-sticky-heading_level);
+	position: absolute;
+	left: -30px;
+	text-align: right;
+	font-weight: normal;
+	color: var(--text-faint);
+	font-size: 14px;
+}
