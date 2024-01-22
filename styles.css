@@ -11,22 +11,26 @@ If your plugin does not need CSS, delete this file.
 
 /* @settings
 
-name: obsidian-sticky-heading
-id: obsidian-sticky-heading
+name: sticky-heading
+id: sticky-heading
 settings:
     -
-        id: obsidian-sticky-heading-top-space
+        id: sticky-heading-top-space
         title: top space when sticky
         description: when sticky, how much space should be left at the top of the screen. like 5px, -1rem, etc.
         type: variable-text
-        default: 0px
+        default: calc(-1 * var(--size-4-8));
 
 */
 
+body {
+	--sticky-heading-top-space: calc(-1 * var(--size-4-8));
+}
+
 .obsidian-sticky-heading {
 	position: sticky !important;
-	top: var(--obsidian-sticky-heading-top-space);
-	background-color: var(--titlebar-background) ;
+	top: var(--sticky-heading-top-space);
+	background-color: var(--titlebar-background);
 	z-index: 1;
 }
 
@@ -38,5 +42,5 @@ settings:
 	font-weight: normal;
 	color: var(--text-faint);
 	font-size: 14px;
-	background-color: var(--background-primary) ;
+	background-color: var(--background-primary);
 }

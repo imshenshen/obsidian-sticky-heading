@@ -19,9 +19,8 @@ export default class MyPlugin extends Plugin {
 
 		// This adds a settings tab so the user can configure various aspects of the plugin
 		// this.addSettingTab(new SampleSettingTab(this.app, this));
-
-		this.registerEditorExtension([HeadingPlugin()])
 		this.app.workspace.trigger("parse-style-settings")
+		this.registerEditorExtension([HeadingPlugin()])
 
 	}
 

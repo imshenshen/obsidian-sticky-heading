@@ -6,6 +6,7 @@ https://github.com/imshenshen/obsidian-sticky-heading/assets/19701958/12f8e9c6-f
 
 
 ## config
+when use different theme, the space of sticky heading is different, so
 you need install [Style Settings plugin](obsidian://show-plugin?id=obsidian-style-settings) , allows you to config top space when sticky.
 ![](https://github.com/imshenshen/obsidian-sticky-heading/assets/19701958/7ffbe469-053c-487a-af50-0b11b3a47e71)
 
