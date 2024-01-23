@@ -1,24 +1,24 @@
-import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import {App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting} from 'obsidian';
 import {HeadingPlugin} from "./src/HeadingPlugin";
 
 // Remember to rename these classes and interfaces!
 
-interface MyPluginSettings {
-	mySetting: string;
+interface StickyHeadingSettings {
+	sticky: boolean;
 }
 
-const DEFAULT_SETTINGS: MyPluginSettings = {
-	mySetting: 'default'
+const DEFAULT_SETTINGS: StickyHeadingSettings = {
+	sticky: true
 }
 
-export default class MyPlugin extends Plugin {
-	// settings: MyPluginSettings;
+export default class StickyHeadingPlugin extends Plugin {
+	// settings: StickyHeadingSettings;
 
 	async onload() {
 		await this.loadSettings();
 
 		// This adds a settings tab so the user can configure various aspects of the plugin
-		// this.addSettingTab(new SampleSettingTab(this.app, this));
+		// this.addSettingTab(new StickyHeadingSettingTab(this.app, this));
 		this.app.workspace.trigger("parse-style-settings")
 		this.registerEditorExtension([HeadingPlugin()])
 
@@ -37,26 +37,10 @@ export default class MyPlugin extends Plugin {
 	}
 }
 
-class SampleModal extends Modal {
-	constructor(app: App) {
-		super(app);
-	}
+class StickyHeadingSettingTab extends PluginSettingTab {
+	plugin: StickyHeadingPlugin;
 
-	onOpen() {
-		const {contentEl} = this;
-		contentEl.setText('Woah!');
-	}
-
-	onClose() {
-		const {contentEl} = this;
-		contentEl.empty();
-	}
-}
-
-class SampleSettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
-
-	constructor(app: App, plugin: MyPlugin) {
+	constructor(app: App, plugin: StickyHeadingPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
@@ -66,6 +50,7 @@ class SampleSettingTab extends PluginSettingTab {
 
 		containerEl.empty();
 
+		/*
 		new Setting(containerEl)
 			.setName('Setting #1')
 			.setDesc('It\'s a secret')
@@ -76,5 +61,6 @@ class SampleSettingTab extends PluginSettingTab {
 					// this.plugin.settings.mySetting = value;
 					// await this.plugin.saveSettings();
 				}));
+		*/
 	}
 }
