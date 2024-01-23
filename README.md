@@ -7,9 +7,22 @@ https://github.com/imshenshen/obsidian-sticky-heading/assets/19701958/12f8e9c6-f
 
 ## config
 when use different theme, the space of sticky heading is different, so
-you need install [Style Settings plugin](obsidian://show-plugin?id=obsidian-style-settings) , allows you to config top space when sticky.
+you need install [Style Settings plugin](https://github.com/mgmeyers/obsidian-style-settings) which allows you to config top space when sticky.
+
 ![](https://github.com/imshenshen/obsidian-sticky-heading/assets/19701958/7ffbe469-053c-487a-af50-0b11b3a47e71)
 
+## known issues
+### sticky heading disappear
+For performance reasons, Obsidian will remove elements that are outside of the viewport. When you have a long content under a heading level, scrolling will cause this sticky heading to disappear.
+
+### look and feel
+When the heading is sticky, we may change its appearance, but this will lead to additional computation and performance consumption. 
+For the sake of performance and simplicity, we have retained its original style.
+
+### not work for reading mode
+This plugin mainly aims to solve the problem of: when writing in fragmented time, I often forget which heading level I am currently at, or which level I should use for the next heading.
+
+If there is significant demand for this feature in reading mode, we will consider implementing it. Pull requests are welcome.
 
 ## Releasing new releases
 
