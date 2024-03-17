@@ -47,7 +47,6 @@ class HeadingViewPlugin implements PluginValue {
 					if (regExpExecArray) {
 						const headingLevel = Number(regExpExecArray[1])
 						if (headingLevel) {
-							console.log(`add sticky heading:  from: ${node.from}, to: ${node.to}, node: ${node.type.name}`)
 							builder.add(node.from, node.from, Decoration.line({
 								class: `${OBSIDIAN_STICKY_HEADING_CLASS}`,
 								attributes: {

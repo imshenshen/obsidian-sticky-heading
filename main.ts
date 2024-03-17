@@ -1,8 +1,6 @@
 import {App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting} from 'obsidian';
 import {HeadingPlugin} from "./src/HeadingPlugin";
 
-// Remember to rename these classes and interfaces!
-
 interface StickyHeadingSettings {
 	sticky: boolean;
 }
