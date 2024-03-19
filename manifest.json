@@ -4,6 +4,7 @@
 	"version": "1.0.4",
 	"minAppVersion": "0.15.0",
 	"description": "Sticky Headings and Shows the heading level",
+	"author": "",
 	"authorUrl": "https://github.com/imshenshen",
 	"isDesktopOnly": false
 }
