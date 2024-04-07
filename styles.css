@@ -14,33 +14,78 @@ If your plugin does not need CSS, delete this file.
 name: sticky-heading
 id: sticky-heading
 settings:
-    -
-        id: sticky-heading-top-space
-        title: top space when sticky
-        description: when sticky, how much space should be left at the top of the screen. like 5px, -1rem, etc.
-        type: variable-text
-        default: calc(-1 * var(--size-4-8));
+	-
+		id: sticky-heading-bg-color
+		title: container background color
+		description: background color of the sticky heading container
+		type: variable-text
+		default: var(--titlebar-background)
+	-
+		id: sticky-heading-shadow-level
+		title: shadow
+		type: variable-select
+		default: none
+		options:
+			-
+				label: medium
+				value: 0 16px 16px -16px gray
+			-
+				label: large
+				value: 0 16px 16px -10px gray
+			-
+				label: none
+				value: none
+	-
+		id: sticky-heading-show-level
+		title: show heading level prefix
+		type: variable-select
+		default: block
+		options:
+			-
+				label: show
+				value: block
+			-
+				label: hide
+				value: none
 
 */
 
 body {
 	--sticky-heading-top-space: calc(-1 * var(--size-4-8));
+	--sticky-heading-bg-color: var(--titlebar-background);
 }
 
 .obsidian-sticky-heading {
-	position: sticky !important;
-	top: var(--sticky-heading-top-space);
-	background-color: var(--titlebar-background);
+	position: absolute;
+	top: 0;
+	width: 100%;
 	z-index: 1;
 }
 
-.obsidian-sticky-heading::before {
-	content: attr(data-obsidian-sticky-heading_level);
+.obsidian-sticky-heading_inner {
+	max-width: calc(var(--max-width) + 8px);
+	width: calc(var(--line-width) + 8px);
+	margin-inline: var(--content-margin) !important;
+	background-color: var(--sticky-heading-bg-color);
+	padding: 0 8px;
+	box-shadow: var(--sticky-heading-shadow-level);
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+.obsidian-sticky-heading_inner > div:first-child{
+	margin-top: 6px;
+}
+.obsidian-sticky-heading_inner > div:last-child{
+	margin-bottom: 6px;
+}
+
+.obsidian-sticky-heading_level {
+	display: var(--sticky-heading-show-level);
 	position: absolute;
 	left: -30px;
 	text-align: right;
 	font-weight: normal;
 	color: var(--text-faint);
 	font-size: 14px;
-	background-color: var(--background-primary);
 }

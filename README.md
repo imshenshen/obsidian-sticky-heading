@@ -12,12 +12,8 @@ you need install [Style Settings plugin](https://github.com/mgmeyers/obsidian-st
 ![](https://github.com/imshenshen/obsidian-sticky-heading/assets/19701958/7ffbe469-053c-487a-af50-0b11b3a47e71)
 
 ## known issues
-### sticky heading disappear
-For performance reasons, Obsidian will remove elements that are outside of the viewport. When you have a long content under a heading level, scrolling will cause this sticky heading to disappear.
-
-### look and feel
-When the heading is sticky, we may change its appearance, but this will lead to additional computation and performance consumption. 
-For the sake of performance and simplicity, we have retained its original style.
+### flicker when setting stickyType to 'prevToH1'
+when setting stickyType to 'prevToH1', When you scroll the screen and the number of sticky headings changes, the sticky heading container will flicker. This is because the plugin needs to calculate the position according to the number of sticky headings.
 
 ### not work for reading mode
 This plugin mainly aims to solve the problem of: when writing in fragmented time, I often forget which heading level I am currently at, or which level I should use for the next heading.

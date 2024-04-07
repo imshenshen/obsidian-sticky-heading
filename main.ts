@@ -1,25 +1,18 @@
-import {App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting} from 'obsidian';
+import {Plugin} from 'obsidian';
 import {HeadingPlugin} from "./src/HeadingPlugin";
+import {DEFAULT_SETTINGS, StickyHeadingSettings, StickyHeadingSettingTab} from "./src/settings";
 
-interface StickyHeadingSettings {
-	sticky: boolean;
-}
-
-const DEFAULT_SETTINGS: StickyHeadingSettings = {
-	sticky: true
-}
 
 export default class StickyHeadingPlugin extends Plugin {
-	// settings: StickyHeadingSettings;
+	settings: StickyHeadingSettings;
 
 	async onload() {
 		await this.loadSettings();
+		this.addSettingTab(new StickyHeadingSettingTab(this.app, this));
 
-		// This adds a settings tab so the user can configure various aspects of the plugin
-		// this.addSettingTab(new StickyHeadingSettingTab(this.app, this));
 		this.app.workspace.trigger("parse-style-settings")
-		this.registerEditorExtension([HeadingPlugin()])
 
+		this.registerEditorExtension([HeadingPlugin(this.settings)])
 	}
 
 	onunload() {
@@ -27,38 +20,12 @@ export default class StickyHeadingPlugin extends Plugin {
 	}
 
 	async loadSettings() {
-		// this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+		const data = await this.loadData();
+		this.settings = Object.assign({}, DEFAULT_SETTINGS, data);
 	}
 
-	async saveSettings() {
-		// await this.saveData(this.settings);
-	}
-}
-
-class StickyHeadingSettingTab extends PluginSettingTab {
-	plugin: StickyHeadingPlugin;
-
-	constructor(app: App, plugin: StickyHeadingPlugin) {
-		super(app, plugin);
-		this.plugin = plugin;
-	}
-
-	display(): void {
-		const {containerEl} = this;
-
-		containerEl.empty();
-
-		/*
-		new Setting(containerEl)
-			.setName('Setting #1')
-			.setDesc('It\'s a secret')
-			.addText(text => text
-				.setPlaceholder('Enter your secret')
-				// .setValue(this.plugin.settings.mySetting)
-				.onChange(async (value) => {
-					// this.plugin.settings.mySetting = value;
-					// await this.plugin.saveSettings();
-				}));
-		*/
+	async saveSettings(settings: any) {
+		Object.assign(this.settings, settings)
+		await this.saveData(this.settings);
 	}
 }
