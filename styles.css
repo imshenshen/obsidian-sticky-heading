@@ -64,8 +64,8 @@ body {
 
 .obsidian-sticky-heading_inner {
 	max-width: calc(var(--max-width) + 8px);
-	width: calc(var(--line-width) + 8px);
-	margin-inline: var(--content-margin) !important;
+	width: calc(var(--line-width, var(--file-line-width, 0px)) + 8px);
+	margin-inline: var(--content-margin, auto) !important;
 	background-color: var(--sticky-heading-bg-color);
 	padding: 0 8px;
 	box-shadow: var(--sticky-heading-shadow-level);
@@ -73,10 +73,12 @@ body {
 	display: flex;
 	flex-direction: column;
 }
-.obsidian-sticky-heading_inner > div:first-child{
+
+.obsidian-sticky-heading_inner > div:first-child {
 	margin-top: 6px;
 }
-.obsidian-sticky-heading_inner > div:last-child{
+
+.obsidian-sticky-heading_inner > div:last-child {
 	margin-bottom: 6px;
 }
 
