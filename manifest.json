@@ -1,7 +1,7 @@
 {
 	"id": "sticky-heading",
 	"name": "Sticky Headings",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"minAppVersion": "0.15.0",
 	"description": "Sticky Headings and Shows the heading level",
 	"author": "Shen Shen",
