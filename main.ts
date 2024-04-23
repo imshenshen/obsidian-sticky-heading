@@ -12,7 +12,7 @@ export default class StickyHeadingPlugin extends Plugin {
 
 		this.app.workspace.trigger("parse-style-settings")
 
-		this.registerEditorExtension([HeadingPlugin(this.settings)])
+		this.registerEditorExtension([HeadingPlugin(this.settings,this.app)])
 	}
 
 	onunload() {

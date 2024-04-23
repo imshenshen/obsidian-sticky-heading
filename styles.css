@@ -62,12 +62,34 @@ body {
 	z-index: 1;
 }
 
+.obsidian-sticky-heading.markdown-rendered h1,
+.obsidian-sticky-heading.markdown-rendered h2,
+.obsidian-sticky-heading.markdown-rendered h3,
+.obsidian-sticky-heading.markdown-rendered h4,
+.obsidian-sticky-heading.markdown-rendered h5,
+.obsidian-sticky-heading.markdown-rendered h6 {
+	margin: 0;
+	font-size: 1.2rem;
+}
+
+.obsidian-sticky-heading.markdown-rendered h2 {
+	font-size: 1.1rem;
+}
+
+.obsidian-sticky-heading.markdown-rendered h3 {
+	font-size: 1rem;
+}
+
+.obsidian-sticky-heading.markdown-rendered h4 {
+	font-size: 0.9rem;
+}
+
 .obsidian-sticky-heading_inner {
 	max-width: calc(var(--max-width) + 8px);
 	width: calc(var(--line-width, var(--file-line-width, 0px)) + 8px);
 	margin-inline: var(--content-margin, auto) !important;
 	background-color: var(--sticky-heading-bg-color);
-	padding: 0 8px;
+	padding: 0 4px;
 	box-shadow: var(--sticky-heading-shadow-level);
 	position: relative;
 	display: flex;

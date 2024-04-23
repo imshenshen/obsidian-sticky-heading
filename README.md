@@ -13,7 +13,7 @@ you need install [Style Settings plugin](https://github.com/mgmeyers/obsidian-st
 
 ## known issues
 ### flicker when setting stickyType to 'prevToH1'
-when setting stickyType to 'prevToH1', When you scroll the screen and the number of sticky headings changes, the sticky heading container will flicker. This is because the plugin needs to calculate the position according to the number of sticky headings.
+when setting stickyType to 'prevToH1', When you scroll the screen and the number of sticky headings changes, the sticky heading container will flicker. This is because the plugin needs to calculate the position according to the current number of sticky headings.
 
 ### not work for reading mode
 This plugin mainly aims to solve the problem of: when writing in fragmented time, I often forget which heading level I am currently at, or which level I should use for the next heading.
