@@ -32,8 +32,8 @@ export function HeadingPlugin(settings: StickyHeadingSettings, app: App) {
 		class HeadingViewPlugin implements PluginValue {
 			stickyDom: HTMLElement
 			view: EditorView
-			headings: [number, string][]
-			oldHeadings: [number, string][]
+			headings: [number, string, number][]
+			oldHeadings: [number, string, number][]
 			settings: StickyHeadingSettings
 
 			constructor(view: EditorView) {
@@ -79,7 +79,7 @@ export function HeadingPlugin(settings: StickyHeadingSettings, app: App) {
 				const dom = document.createElement("div")
 				dom.classList.add(`${OBSIDIAN_STICKY_HEADING_CLASS}_inner`)
 
-				this.headings.forEach(([level, text]) => {
+				this.headings.forEach(([level, text, line]) => {
 					const header = document.createElement("div")
 					header.classList.add("HyperMD-header", `HyperMD-header-${level}`)
 					const headerContent = document.createElement("div")
@@ -98,6 +98,10 @@ export function HeadingPlugin(settings: StickyHeadingSettings, app: App) {
 					headerContent.appendChild(textDom)
 					header.appendChild(headerContent)
 					dom.appendChild(header)
+
+					header.addEventListener("click", () => {
+						this.view.dispatch({ effects: EditorView.scrollIntoView(this.view.state.doc.line(line).from) })
+					})
 				})
 				this.stickyDom.replaceChildren(dom)
 			}
@@ -123,11 +127,11 @@ export function HeadingPlugin(settings: StickyHeadingSettings, app: App) {
 				}
 			}
 
-			findHeaders(view: EditorView): [number, string][] {
-				const headerOutViewList: [number, string][] = []
+			findHeaders(view: EditorView): [number, string, number][] {
+				const headerOutViewList: [number, string, number][] = []
 
 				let distance = getDistanceFromContentToScroller(view);
-				const headings: [number, string][] = []
+				const headings: [number, string, number][] = []
 				let offset = -10
 				if (this.oldHeadings.length !== 0) {
 					offset = 10
@@ -149,7 +153,8 @@ export function HeadingPlugin(settings: StickyHeadingSettings, app: App) {
 							if (regExpExecArray) {
 								const level = Number(regExpExecArray[1])
 								const text = view.state.sliceDoc(node.from, node.to).trim()
-								headerOutViewList.unshift([level, text])
+								const line = view.state.doc.lineAt(node.from).number;
+								headerOutViewList.unshift([level, text, line])
 							}
 						},
 					});
